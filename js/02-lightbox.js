@@ -9,7 +9,7 @@ const options = {
   captionsData: "alt",
   captionDelay: 250,
 };
-const lightbox = new SimpleLightbox(".gallery .gallery__link", options);
+
 
 galleryList.insertAdjacentHTML("afterbegin", galleryItemMurkup);
 
@@ -41,7 +41,7 @@ function onGalleryImgClick(event) {
     return;
   }
   
-  
+  const lightbox = new SimpleLightbox(".gallery .gallery__link", options);
 }
 
 function blockingBrowserActions(event) {
