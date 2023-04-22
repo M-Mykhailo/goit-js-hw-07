@@ -6,14 +6,13 @@ console.log(galleryItems);
 const galleryList = document.querySelector(".gallery");
 const galleryItemMurkup = createGalleryItemMarkup(galleryItems);
 const options = {
+  overlayOpacity: 0.8,
   captionsData: "alt",
   captionDelay: 250,
+  animationSpeed: 350,
 };
 
-
 galleryList.insertAdjacentHTML("afterbegin", galleryItemMurkup);
-
-galleryList.addEventListener("click", onGalleryImgClick);
 
 function createGalleryItemMarkup(items) {
   return items
@@ -33,17 +32,4 @@ function createGalleryItemMarkup(items) {
     .join("");
 }
 
-function onGalleryImgClick(event) {
-
-  blockingBrowserActions(event);
-
-  if (event.target.nodeName !== "IMG") {
-    return;
-  }
-  
-  const lightbox = new SimpleLightbox(".gallery .gallery__link", options);
-}
-
-function blockingBrowserActions(event) {
-  event.preventDefault();
-}
+let galleryLightbox = new SimpleLightbox(".gallery .gallery__link", options);

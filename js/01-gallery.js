@@ -50,14 +50,5 @@ function onGalleryImgClick(event) {
 }
 
 function blockingBrowserActions(event) {
-    event.preventDefault();
+  event.preventDefault();
 }
-
-
-
-
-
-
-
-
-
