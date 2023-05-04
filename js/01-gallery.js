@@ -36,19 +36,27 @@ function onGalleryImgClick(event) {
     return;
   }
 
-  const instance = basicLightbox.create(`
-		<img src="${event.target.dataset.source}"/>
-	`);
-
+  const instance = basicLightbox.create(
+    `<img src="${event.target.dataset.source}"/>`,
+    {
+      onShow: () => {
+        window.addEventListener("keydown", onPressEscape);
+      },
+      onClose: () => {
+        window.removeEventListener("keydown", onPressEscape);
+      },
+    }
+  );
   instance.show();
-
-  galleryList.addEventListener("keydown", (event) => {
+ 
+  function onPressEscape(event) {
     if (event.code === "Escape") {
       instance.close();
     }
-  });
-}
+  }
+};
 
 function blockingBrowserActions(event) {
   event.preventDefault();
-}
+};
+
